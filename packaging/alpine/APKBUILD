@@ -1,0 +1,22 @@
+# Contributor: Zaki <zaki@toshiba>
+pkgname=arch-update-watcher-aio
+pkgver=0.2.1
+pkgrel=0
+pkgdesc="Cautious update checker for several Linux distributions"
+url="https://github.com/azmikhalqi99-coder/arch-update-watcher-aio"
+arch="noarch"
+license="MIT"
+depends="python3 kdialog libnotify"
+makedepends=""
+source="plasma-watcher-$pkgver.tar.gz"
+builddir="$srcdir/plasma-watcher"
+
+build() {
+    # Python script doesn't need building, just make it executable
+    chmod +x plasma_watcher.py
+}
+
+package() {
+    mkdir -p "$pkgdir/usr/bin"
+    install -m755 "$builddir/plasma_watcher.py" "$pkgdir/usr/bin/plasma_watcher"
+}

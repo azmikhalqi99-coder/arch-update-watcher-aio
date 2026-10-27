@@ -1,0 +1,15 @@
+# Maintainer: Zaki <zaki@toshiba>
+pkgname=arch-update-watcher-aio
+pkgver=0.2.1
+pkgrel=1
+pkgdesc="Cautious update checker for several Linux distributions"
+arch=('any')
+url="https://github.com/azmikhalqi99-coder/arch-update-watcher-aio"
+license=('MIT')
+depends=('python' 'kdialog' 'libnotify')
+source=("plasma-watcher-$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+    install -Dm755 "$srcdir/plasma-watcher/plasma_watcher.py" "$pkgdir/usr/bin/plasma_watcher"
+}
